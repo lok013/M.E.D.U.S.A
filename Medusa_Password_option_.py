@@ -10,9 +10,11 @@ class SpeechAccess:
         voices = self.speaks.getProperty('voices')
         if len(voices) > 1:
             self.speaks.setProperty('voice', voices[1].id)
+        elif len(voices) == 0:
+            print("No available voices.")
+            return  # Early exit if no voice is found
         self.speaks.say(text)
         self.speaks.runAndWait()
-
 
 class Main:
     def __init__(self):
@@ -22,6 +24,32 @@ class Main:
         alphabet = string.ascii_letters + string.digits + string.punctuation
         password = ''.join(secrets.choice(alphabet) for _ in range(length))
         return password
+
+    def validate_password_length(self, length_str):
+        try:
+            length = int(length_str)
+            if length <= 0:
+                raise ValueError("Length must be greater than 0.")
+            return length
+        except ValueError as e:
+            print(f"Invalid input: {e}")
+            return None
+
+    def handle_password(self):
+        password_length_str = input("Enter the length of the password: ").strip()
+        password_length = self.validate_password_length(password_length_str)
+        if password_length is not None:
+            password = self.generate_password(password_length)
+            message = f'Your generated password is: {password}'
+            print(message)
+            self.speech_access.speak_logic(message)
+
+    def handle_injection(self):
+        message = "Injection payload generated."
+        injections = "' OR '1'='1'; --"
+        print(message)
+        print(injections)
+        self.speech_access.speak_logic(message)
 
     def main(self):
         while True:
@@ -34,32 +62,13 @@ class Main:
                 break
             
             elif user_input == 'password':
-                password_length_str = input("Enter the length of the password: ").strip()
-
-                if not password_length_str.isdigit():
-                    print("Invalid input. Please enter a valid integer.")
-                    continue
-                password_length = int(password_length_str)
-
-                if password_length <= 0:
-                    print("Password length must be greater than 0.")
-                    continue
-                
-                password = self.generate_password(password_length)
-                message = f'Your generated password is: {password}'
-                print(message)
-                self.speech_access.speak_logic(message)
+                self.handle_password()
             
             elif user_input == 'injection':
-                message = "Injection payload generated."
-                injections = "' OR '1'='1'; --"
-                print(message)
-                print(injections)
-                self.speech_access.speak_logic(message)
+                self.handle_injection()
 
             else:
                 print("Invalid option. Please enter 'password', 'injection', or 'exit'.")
-                continue
 
 if __name__ == "__main__":
     Main().main()
