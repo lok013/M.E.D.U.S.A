@@ -2,7 +2,6 @@ import tkinter as tk
 from tkinter import filedialog
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
-from base64 import b64encode, b64decode
 
 def encrypt_file(file_path, key):
     with open(file_path, 'rb') as file:
@@ -33,6 +32,10 @@ def select_file():
     file_path = filedialog.askopenfilename()
     if file_path:
         key = input("Enter encryption key (must be 16, 24, or 32 bytes long): ").encode()
+        
+        if len(key) not in [16, 24, 32]:
+            print("Invalid key length! Must be 16, 24, or 32 bytes long.")
+            return
         
         encrypt_file(file_path, key)
         print("File encrypted successfully.")
