@@ -26,7 +26,7 @@
 
 ## Installation
 
-To get started with MEDUSA, follow these steps:
+To get started with M.E.D.U.S.A, follow these steps:
 
 1. Clone the repository.
 2. Navigate to the project directory.
