@@ -13,7 +13,7 @@
 **M.E.D.U.S.A** (Malware Examination and Detection Utility for Security Assessment) is an open-source project designed for educational purposes. This project aims to provide tools for malware detection, keylogging, and various other security services. By engaging with **M.E.D.U.S.A**, users can enhance their cybersecurity knowledge and skills, exploring and understanding different components of security software.
 
 
-**Important Note:** This project is owned by Alok Sharma. Others can use this software for educational and research purposes but cannot claim ownership or distribute it without explicit permission from the author.
+**Important Note:** This project is owned by Alok Sharma. Others can use this software for educational and research purposes but cannot claim ownership or distribute it without explicit permission from the author. If you are running the software, there are numerous errors that still need to be resolved.
 
 ## Features
 
@@ -50,3 +50,9 @@ Your input will help enhance and expand the capabilities of this project!
 ## Disclaimer
 
 This project is intended for educational and research purposes only. The authors are not responsible for any misuse of the software. Use it responsibly and only on systems you own or have explicit permission to test. **While this project is available for use, no one is permitted to claim ownership or distribute it without my consent.**
+
+
+## Contact
+E-mail_id = aloksharma132005@gmail.com
+Linked-in = www.linkedin.com/in/alok-sharma13
+Instagram = _.alok._13
